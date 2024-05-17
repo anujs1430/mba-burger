@@ -1,0 +1,50 @@
+@import "colors";
+
+nav {
+  height: 5rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px $lightdark;
+  overflow: hidden;
+
+  > div {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    > a > .brand-logo {
+      color: $red;
+      font-size: 3rem;
+    }
+
+    a {
+      margin: 0 1rem;
+      color: $dark;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $lightdark;
+      }
+
+      > svg {
+        color: $red;
+        transition: inherit;
+        font-size: 1.5rem;
+
+        &:hover {
+          color: $lightdark;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  nav > div a {
+    margin: 0 0.5rem;
+    color: #000;
+    transition: all 0.3s;
+  }
+}

@@ -1,0 +1,87 @@
+@import "colors";
+
+.home {
+  height: 100vh;
+  overflow: hidden;
+
+  div {
+    padding-left: 8rem;
+    padding-top: 15rem;
+
+    > h1 {
+      font-size: 4rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  > a {
+    margin: 2rem 8rem;
+    width: 10rem;
+    background-color: $red;
+    color: #fff;
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 1rem;
+    display: block;
+
+    &:hover {
+      background-color: $reddark;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    z-index: -1;
+    // overflow: hidden;
+  }
+
+  .img-div {
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .home {
+    > div {
+      padding: 15rem 1rem 0 1rem;
+      text-align: center;
+
+      > h1 {
+        color: #fff;
+        font-size: 3rem;
+      }
+
+      > p {
+        color: #fff;
+      }
+    }
+
+    > img {
+      position: absolute;
+      top: 81px;
+      right: 0;
+      z-index: -1;
+    }
+
+    a {
+      margin: 12rem 8rem 0 8rem;
+    }
+
+    .hide-sm {
+      display: none;
+    }
+
+    .lg-d-none {
+      display: initial;
+    }
+  }
+}
