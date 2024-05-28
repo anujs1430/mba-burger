@@ -3,6 +3,7 @@ import burger1 from "../assets/burger1.png";
 import burger2 from "../assets/burger2.png";
 import burger3 from "../assets/burger3.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Cart = () => {
   const increment = (item) => {
@@ -21,6 +22,7 @@ const Cart = () => {
           value={0}
           increment={() => increment(1)}
           decrement={() => decrement(1)}
+          delay={0}
         />
         <CartItems
           title={"CHICKEN BURGER"}
@@ -28,6 +30,7 @@ const Cart = () => {
           value={0}
           increment={() => increment(2)}
           decrement={() => decrement(2)}
+          delay={0.4}
         />
         <CartItems
           title={"EGG BURGER"}
@@ -35,9 +38,14 @@ const Cart = () => {
           value={0}
           increment={() => increment(3)}
           decrement={() => decrement(3)}
+          delay={0.8}
         />
 
-        <article>
+        <motion.article
+          initial={{ x: "+100%", opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
           <div>
             <h4>Sub Total</h4>
             <p>₹ {2000}</p>
@@ -56,15 +64,20 @@ const Cart = () => {
           </div>
 
           <Link to={"/shipping"}>CheckOut</Link>
-        </article>
+        </motion.article>
       </main>
     </section>
   );
 };
 
-const CartItems = ({ value, title, img, increment, decrement }) => {
+const CartItems = ({ value, title, img, increment, decrement, delay }) => {
   return (
-    <div className="cartItems">
+    <motion.div
+      className="cartItems"
+      initial={{ x: "-100%", opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.7, delay }}
+    >
       <div>
         <h4>{title}</h4>
         <img src={img} alt="item" />
@@ -75,7 +88,7 @@ const CartItems = ({ value, title, img, increment, decrement }) => {
         <input type="number" readOnly value={value} />
         <button onClick={increment}>+</button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -14,11 +14,15 @@ import Profile from "./components/Profile";
 import MyOrders from "./components/MyOrders";
 import OrderDetails from "./components/OrderDetails";
 import Dashboard from "./components/admin/Dashboard";
+import Users from "./components/admin/Users";
+import Orders from "./components/admin/Orders";
+import Notfound from "./components/Notfound";
 
 import "./styles/app.scss";
 import "./styles/header.scss";
 import "./styles/home.scss";
 import "./styles/contact.scss";
+import "./styles/about.scss";
 import "./styles/founder.scss";
 import "./styles/menu.scss";
 import "./styles/footer.scss";
@@ -31,6 +35,9 @@ import "./styles/profile.scss";
 import "./styles/table.scss";
 import "./styles/orderDetails.scss";
 import "./styles/dashboard.scss";
+import "./styles/users.scss";
+import "./styles/order.scss";
+import "./styles/loader.scss";
 
 const App = () => {
   return (
@@ -49,6 +56,9 @@ const App = () => {
         <Route path={"/myorders"} element={<MyOrders />} />
         <Route path={"/order/:id"} element={<OrderDetails />} />
         <Route path={"/admin/dashboard"} element={<Dashboard />} />
+        <Route path={"/admin/users"} element={<Users />} />
+        <Route path={"/admin/orders"} element={<Orders />} />
+        <Route path={"*"} element={<Notfound />} />
       </Routes>
       <Footer />
     </Router>

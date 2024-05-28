@@ -1,3 +1,5 @@
+@import "colors";
+
 * {
   margin: 0%;
   padding: 0%;
@@ -22,4 +24,69 @@ a {
 
 .bg-dark {
   background-color: #000 !important;
+}
+
+.not-found {
+  background-color: $pink;
+  width: 100%;
+  height: 100vh;
+
+  > main {
+    background-color: #fff;
+    height: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > div {
+      display: flex;
+      align-items: center;
+      margin: 3rem;
+
+      > svg {
+        font-size: 4rem;
+      }
+      > h1 {
+        text-transform: uppercase;
+        align-items: center;
+        font: 100 3rem "Roboto";
+        margin: 0 1rem;
+      }
+    }
+
+    > a {
+      background-color: $red;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-align: center;
+      margin: 1rem;
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  > svg {
+    font-size: 15rem;
+    color: $red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+  }
+
+  > div {
+    font: 700 2rem "Roboto";
+    letter-spacing: 5px;
+  }
 }

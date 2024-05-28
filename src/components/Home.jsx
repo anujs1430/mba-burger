@@ -1,5 +1,5 @@
 import React from "react";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Founder from "./Founder";
 import Menu from "./Menu";
 import bg from "../assets/bg.svg";

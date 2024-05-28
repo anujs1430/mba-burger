@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Country, State } from "country-state-city";
 
 const Shipping = () => {
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [states, setStates] = useState([]);
+
+  useEffect(() => {
+    if (selectedCountry) {
+      const states = State.getStatesOfCountry(selectedCountry);
+      setStates(states);
+    } else {
+      setStates([]);
+    }
+  }, [selectedCountry]);
+
   return (
     <section className="shipping">
       <main>
@@ -16,31 +28,33 @@ const Shipping = () => {
             <input type="text" id="city" placeholder="Enter City" />
           </div>
           <div>
-            <label htmlFor="">Country</label>
-            <select id="">
-              <option value="0" disabled selected>
+            <label htmlFor="country">Country</label>
+            <select
+              id="country"
+              value={selectedCountry}
+              onChange={(e) => setSelectedCountry(e.target.value)}
+            >
+              <option value="" disabled>
                 Choose Your Country
               </option>
-              {Country &&
-                Country.getAllCountries().map((i) => (
-                  <option value={i.isoCode} key={i.isoCode}>
-                    {i.name}
-                  </option>
-                ))}
+              {Country.getAllCountries().map((country) => (
+                <option value={country.isoCode} key={country.isoCode}>
+                  {country.name}
+                </option>
+              ))}
             </select>
           </div>
           <div>
-            <label htmlFor="">State</label>
-            <select id="">
-              <option value="0" disabled selected>
+            <label htmlFor="state">State</label>
+            <select id="state" disabled={!selectedCountry}>
+              <option value="" disabled>
                 Choose Your State
               </option>
-              {State &&
-                State.getStatesOfCountry("IN").map((i) => (
-                  <option value={i.isoCode} key={i.isoCode}>
-                    {i.name}
-                  </option>
-                ))}
+              {states.map((state) => (
+                <option value={state.isoCode} key={state.isoCode}>
+                  {state.name}
+                </option>
+              ))}
             </select>
           </div>
           <div>
@@ -51,7 +65,6 @@ const Shipping = () => {
             <label htmlFor="phone">Phone</label>
             <input type="text" id="phone" placeholder="Enter Phone Number" />
           </div>
-
           <button type="submit">Confirm Order</button>
         </form>
       </main>

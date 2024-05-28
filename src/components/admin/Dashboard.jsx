@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, Tooltip, ArcElement, Legend } from "chart.js";
+import Loader from "../Loader";
 
 const Box = ({ value, title }) => {
   return (
@@ -12,6 +13,8 @@ const Box = ({ value, title }) => {
     </div>
   );
 };
+
+const loading = false;
 
 ChartJS.register(Tooltip, ArcElement, Legend);
 
@@ -39,24 +42,28 @@ const Dashboard = () => {
 
   return (
     <section className="dashboard">
-      <main>
-        <article>
-          <Box title={"Users"} value={123} />
-          <Box title={"Orders"} value={13} />
-          <Box title={"Income"} value={12313} />
-        </article>
+      {loading === false ? (
+        <main>
+          <article>
+            <Box title={"Users"} value={123} />
+            <Box title={"Orders"} value={13} />
+            <Box title={"Income"} value={12313} />
+          </article>
 
-        <section>
-          <div>
-            <Link to={"/admin/orders"}>View Orders</Link>
-            <Link to={"/admin/users"}>View Users</Link>
-          </div>
+          <section>
+            <div>
+              <Link to={"/admin/orders"}>View Orders</Link>
+              <Link to={"/admin/users"}>View Users</Link>
+            </div>
 
-          <aside>
-            <Doughnut data={data} />
-          </aside>
-        </section>
-      </main>
+            <aside>
+              <Doughnut data={data} />
+            </aside>
+          </section>
+        </main>
+      ) : (
+        <Loader />
+      )}
     </section>
   );
 };
